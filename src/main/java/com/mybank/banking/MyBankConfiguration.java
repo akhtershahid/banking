@@ -8,7 +8,7 @@ import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 /**
  * @author sakhter
  */
-public class MyBankConfigguration extends Configuration {
+public class MyBankConfiguration extends Configuration {
 
     @JsonProperty("swagger")
     public SwaggerBundleConfiguration swaggerBundleConfiguration;

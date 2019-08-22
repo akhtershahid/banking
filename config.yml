@@ -1,5 +1,4 @@
 server:
-  applicationContextPath: /mybank
   applicationConnectors:
     - type: http
       port: 8080

@@ -11,24 +11,25 @@ import ru.vyarus.dropwizard.guice.GuiceBundle;
 /**
  * @author sakhter
  */
-public class MyBankingApp extends Application<MyBankConfigguration> {
+public class MyBankingApp extends Application<MyBankConfiguration> {
 
     @Override
-    public void initialize(Bootstrap<MyBankConfigguration> bootstrap) {
+    public void initialize(Bootstrap<MyBankConfiguration> bootstrap) {
         bootstrap.addBundle(GuiceBundle.builder()
                 .enableAutoConfig(getClass().getPackage().getName())
                 .modules(new ServiceModule())
                 .build());
-        bootstrap.addBundle(new SwaggerBundle<MyBankConfigguration>() {
+
+        bootstrap.addBundle(new SwaggerBundle<MyBankConfiguration>() {
             @Override
-            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(MyBankConfigguration configuration) {
-                return configuration.swaggerBundleConfiguration;
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(MyBankConfiguration myBankConfiguration) {
+                return myBankConfiguration.swaggerBundleConfiguration;
             }
-        });
+        }) ;
     }
 
     @Override
-    public void run(MyBankConfigguration c, Environment e) throws Exception {
+    public void run(MyBankConfiguration c, Environment e) throws Exception {
     }
 
     public static void main(String[] args) throws Exception {

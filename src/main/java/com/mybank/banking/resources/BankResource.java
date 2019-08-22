@@ -6,7 +6,6 @@ import com.mybank.banking.service.BankingService;
 import io.swagger.annotations.Api;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
