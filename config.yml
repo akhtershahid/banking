@@ -1,0 +1,12 @@
+server:
+  applicationContextPath: /mybank
+  applicationConnectors:
+    - type: http
+      port: 8080
+logging:
+  level: WARN
+  loggers:
+    com.mybank.banking: INFO
+
+swagger:
+  resourcePackage: com.mybank.banking.resources
