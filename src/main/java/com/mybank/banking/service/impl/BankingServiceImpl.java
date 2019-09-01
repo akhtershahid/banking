@@ -45,7 +45,7 @@ public class BankingServiceImpl implements BankingService {
 
     @Override
     public void transfer(Long senderAccountId, Long receiverAccountId, Long amount) {
-        if(senderAccountId == receiverAccountId) {
+        if(senderAccountId.equals(receiverAccountId)) {
             throw new TransferException("Sender and Receiver account not distinct");
         }
         Account senderAccount = findAccount(senderAccountId).orElseThrow(() -> new AccountNotFoundException("Sender account not found"));
@@ -75,7 +75,7 @@ public class BankingServiceImpl implements BankingService {
     }
 
     /**
-     * Makes a transfer from teh sender to the receiver account transactionally by acquiring locks
+     * Makes a transfer from the sender to the receiver account transactionally by acquiring locks
      * on both the accounts.
      * To avoid deadlock acquires lock on the accounts in the ascending order of the accountId
      * Releases locks in the reverse order

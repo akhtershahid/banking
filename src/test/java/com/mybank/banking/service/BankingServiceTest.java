@@ -7,8 +7,6 @@ import com.mybank.banking.service.impl.BankingServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.math.BigDecimal;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -84,6 +82,11 @@ public class BankingServiceTest {
                 () -> bankingService.transfer(accountId1, accountId1, 1005L));
 
         assertEquals("Sender and Receiver account not distinct", e.getMessage());
+
+        TransferException e2 = assertThrows(TransferException.class,
+                () -> bankingService.transfer(accountId1, new Long(1), 1005L));
+
+        assertEquals("Sender and Receiver account not distinct", e2.getMessage());
     }
 
 }
