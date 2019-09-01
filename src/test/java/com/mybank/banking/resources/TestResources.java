@@ -301,4 +301,27 @@ public class TestResources {
         //Then: status code is 404
         assertEquals(response.getStatus(), 400);
     }
+
+    @Test
+    public void testTransfer_zeroAmount_expect422() {
+        //Given:  sender and receiver account
+        Response response = client.target(
+                String.format("http://localhost:%d/account", RULE.getLocalPort()))
+                .request()
+                .post(null);
+
+        response = client.target(
+                String.format("http://localhost:%d/account", RULE.getLocalPort()))
+                .request()
+                .post(null);
+
+        //When: Transfer Zero amount from sender to receiver account
+        response = client.target(
+                String.format("http://localhost:%d/transfer", RULE.getLocalPort()))
+                .request()
+                .post(Entity.entity(new Transfer(1L, 2L, 0L), MediaType.APPLICATION_JSON_TYPE));
+
+        //Then: status code is 422
+        assertEquals(response.getStatus(), 422);
+    }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.jackson.JsonSnakeCase;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -20,6 +21,7 @@ public class Transfer {
     private Long receiverAccount;
 
     @NotNull
+    @Min(1)
     private Long amount;
 
     public Transfer() {
